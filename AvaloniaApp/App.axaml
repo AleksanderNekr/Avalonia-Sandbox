@@ -1,0 +1,17 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:viewModels="clr-namespace:AvaloniaApp.ViewModels"
+             x:Class="AvaloniaApp.App"
+             x:Name="Application"
+             x:DataType="viewModels:MainWindowViewModel">
+
+    <Application.Resources>
+    </Application.Resources>
+    <Application.DataContext>
+        <viewModels:MainWindowViewModel />
+    </Application.DataContext>
+    <Application.Styles>
+        <FluentTheme
+            Mode="{Binding ThemeMode, Mode=TwoWay}" />
+    </Application.Styles>
+</Application>
