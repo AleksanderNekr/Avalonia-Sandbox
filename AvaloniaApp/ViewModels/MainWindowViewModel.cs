@@ -9,7 +9,11 @@ public partial class MainWindowViewModel : ObservableObject
 {
     [ObservableProperty]
     [NotifyCanExecuteChangedFor(nameof(ChangeThemeCommand))]
-    private string? _input;
+    private string? _firstName;
+
+    [ObservableProperty]
+    [NotifyCanExecuteChangedFor(nameof(ChangeThemeCommand))]
+    private string? _lastName;
 
     [ObservableProperty]
     private FluentThemeMode _themeMode;
@@ -29,6 +33,6 @@ public partial class MainWindowViewModel : ObservableObject
 
     private bool IsCorrectInput()
     {
-        return !string.IsNullOrEmpty(this.Input);
+        return !string.IsNullOrEmpty(this.FirstName) && !string.IsNullOrEmpty(this.LastName);
     }
 }

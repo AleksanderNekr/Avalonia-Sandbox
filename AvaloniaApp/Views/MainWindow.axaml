@@ -19,7 +19,10 @@
             Text="{Binding Greeting, Mode=OneWay}"
             HorizontalAlignment="Center"
             VerticalAlignment="Center" />
-        <StackPanel Grid.Row="1">
+        <StackPanel
+            VerticalAlignment="Center"
+            Grid.Row="1"
+            Spacing="5">
             <controls:TextBoxExt
                 MinWidth="200"
                 VerticalAlignment="Center"
@@ -27,14 +30,14 @@
                 Watermark="Enter your first name here"
                 Title="First name"
                 Description="Only letters are allowed"
-                Text="{Binding Input, Mode=TwoWay}" />
+                Text="{Binding FirstName, Mode=TwoWay}" />
             <controls:TextBoxExt
                 MinWidth="200"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"
                 Watermark="Enter your last name here"
                 Title="Last name"
-                Text="{Binding Input, Mode=TwoWay}" />
+                Text="{Binding LastName, Mode=TwoWay}" />
         </StackPanel>
         <Button
             Grid.Row="2"
