@@ -1,5 +1,7 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Data.Core;
+using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 using AvaloniaApp.ViewModels;
 using AvaloniaApp.Views;
@@ -19,6 +21,9 @@ public class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
+//         Remove the DataAnnotations validator
+        ExpressionObserver.DataValidators.RemoveAll(x => x is DataAnnotationsValidationPlugin);
+
         if (this.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             desktop.MainWindow = new MainWindow

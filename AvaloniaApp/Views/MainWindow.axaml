@@ -30,13 +30,19 @@
                 Watermark="Enter your first name here"
                 Title="First name"
                 Description="Only letters are allowed"
-                Text="{Binding FirstName, Mode=TwoWay}" />
+                Text="{Binding FirstName}" />
             <controls:TextBoxExt
                 MinWidth="200"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"
                 Watermark="Enter your last name here"
                 Title="Last name"
+                Text="{Binding LastName}" />
+            <TextBox
+                MinWidth="200"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Watermark="Enter your last name here"
                 Text="{Binding LastName, Mode=TwoWay}" />
         </StackPanel>
         <Button
@@ -57,5 +63,4 @@
             </StackPanel>
         </Button>
     </Grid>
-
 </Window>
