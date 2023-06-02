@@ -3,6 +3,7 @@
         xmlns:vm="using:AvaloniaApp.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:AvaloniaApp.Controls"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="AvaloniaApp.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
@@ -18,34 +19,38 @@
             Text="{Binding Greeting, Mode=OneWay}"
             HorizontalAlignment="Center"
             VerticalAlignment="Center" />
-        <TextBox
-            Grid.Row="1"
-            MinWidth="100"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Center"
-            Text="{Binding Input, Mode=TwoWay}" />
+        <StackPanel Grid.Row="1">
+            <controls:TextBoxExt
+                MinWidth="200"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Watermark="Enter your first name here"
+                Title="First name"
+                Description="Only letters are allowed"
+                Text="{Binding Input, Mode=TwoWay}" />
+            <controls:TextBoxExt
+                MinWidth="200"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Watermark="Enter your last name here"
+                Title="Last name"
+                Text="{Binding Input, Mode=TwoWay}" />
+        </StackPanel>
         <Button
             Grid.Row="2"
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
             Command="{Binding ChangeThemeCommand}">
-            <StackPanel Orientation="Horizontal">
+            <StackPanel
+                Orientation="Horizontal"
+                Spacing="5">
                 <Border
                     CornerRadius="8"
-                    Margin="0,0,5,0"
                     Width="16"
                     Height="16"
                     Background="Red" />
                 <TextBlock
-                    Text="Change theme">
-                    <AdornerLayer.AdornedElement>
-                        <TextBlock
-                            Foreground="White"
-                            Background="Black"
-                            Text="This will change the theme"
-                            Margin="0,0,5,0" />
-                    </AdornerLayer.AdornedElement>
-                </TextBlock>
+                    Text="Change theme" />
             </StackPanel>
         </Button>
     </Grid>

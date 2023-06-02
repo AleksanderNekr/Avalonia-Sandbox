@@ -1,0 +1,23 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaApp.Controls.TextBoxExt"
+             x:Name="Control">
+    <StackPanel>
+        <TextBlock
+            FontSize="13"
+            Margin="0,0,0,1"
+            Text="{Binding ElementName=Control, Path=Title, Mode=OneWay}" />
+        <TextBox
+            Watermark="{Binding ElementName=Control, Path=Watermark}"
+            Text="{Binding ElementName=Control, Path=Text, Mode=TwoWay}">
+        </TextBox>
+        <TextBlock
+            FontSize="12"
+            Margin="0,1,0,0"
+            Foreground="Gray"
+            Text="{Binding ElementName=Control, Path=Description, Mode=OneWay}" />
+    </StackPanel>
+</UserControl>
