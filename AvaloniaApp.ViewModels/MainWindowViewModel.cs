@@ -18,12 +18,9 @@ public partial class MainWindowViewModel : ObservableValidator
                                 LastName  = Guid.NewGuid().ToString(),
                             });
         }
-
-        this.ValidateAllProperties();
     }
 
     [ObservableProperty]
-    [NotifyCanExecuteChangedFor(nameof(ClickCommand))]
     [NotifyPropertyChangedFor(nameof(Greeting))]
     [NotifyDataErrorInfo]
     [Required(ErrorMessage = "This is a required field.")]
@@ -31,7 +28,6 @@ public partial class MainWindowViewModel : ObservableValidator
     private string? _firstName;
 
     [ObservableProperty]
-    [NotifyCanExecuteChangedFor(nameof(ClickCommand))]
     [NotifyPropertyChangedFor(nameof(Greeting))]
     [NotifyDataErrorInfo]
     [Required(ErrorMessage = "This is a required field.")]
@@ -42,24 +38,25 @@ public partial class MainWindowViewModel : ObservableValidator
     {
         get
         {
-            return this.IsCorrectInput()
+            return !string.IsNullOrEmpty(this.FirstName) && !string.IsNullOrEmpty(this.LastName)
                        ? $"Welcome to Avalonia, {this.FirstName} {this.LastName}!"
                        : "Welcome to Avalonia!";
         }
     }
 
     [ObservableProperty]
-    public ObservableCollection<Person> _people;
+    private ObservableCollection<Person> _people;
 
-    [RelayCommand(CanExecute = nameof(IsCorrectInput))]
+    [RelayCommand]
     private void Click()
     {
-        this.People.Add(new Person { FirstName = this.FirstName, LastName = this.LastName });
-    }
+        this.ValidateAllProperties();
+        if (this.HasErrors)
+        {
+            return;
+        }
 
-    private bool IsCorrectInput()
-    {
-        return !this.HasErrors;
+        this.People.Add(new Person { FirstName = this.FirstName, LastName = this.LastName });
     }
 }
 
