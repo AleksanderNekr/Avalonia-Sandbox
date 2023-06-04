@@ -5,50 +5,40 @@
         xmlns:viewModels="clr-namespace:AvaloniaApp.ViewModels;assembly=AvaloniaApp.ViewModels"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="AvaloniaApp.Views.MainWindow"
-        x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="AvaloniaApp"
         x:Name="Window">
-    <Design.DataContext>
-        <vm:MainWindowViewModel />
-    </Design.DataContext>
-
-    <Grid RowDefinitions="0.2*,*,*">
+    <Grid
+        x:DataType="viewModels:MainWindowViewModel"
+        VerticalAlignment="Center"
+        RowDefinitions="Auto,Auto,Auto,Auto,*">
         <TextBlock
             Text="{Binding Greeting, Mode=OneWay}"
             HorizontalAlignment="Center"
             VerticalAlignment="Center" />
-        <StackPanel
-            VerticalAlignment="Center"
+        <TextBox
             Grid.Row="1"
-            Spacing="5">
-            <controls:TextBoxExt
-                MinWidth="200"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                Watermark="Enter your first name here"
-                Title="First name"
-                Description="Only letters are allowed"
-                Text="{Binding FirstName}" />
-            <controls:TextBoxExt
-                MinWidth="200"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                Watermark="Enter your last name here"
-                Title="Last name"
-                Text="{Binding LastName}" />
-            <TextBox
-                MinWidth="200"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                Watermark="Enter your last name here"
-                Text="{Binding LastName, Mode=TwoWay}" />
-        </StackPanel>
-        <Button
-            Grid.Row="2"
+            MinWidth="200"
+            MaxWidth="230"
+            MaxLength="50"
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
-            Command="{Binding ChangeThemeCommand}">
+            Watermark="Enter your first name here"
+            Text="{Binding FirstName}" />
+        <TextBox
+            Grid.Row="2"
+            MinWidth="200"
+            MaxWidth="230"
+            MaxLength="50"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Watermark="Enter your last name here"
+            Text="{Binding LastName, Mode=TwoWay}" />
+        <Button
+            Grid.Row="3"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Command="{Binding ClickCommand}">
             <StackPanel
                 Orientation="Horizontal"
                 Spacing="5">
