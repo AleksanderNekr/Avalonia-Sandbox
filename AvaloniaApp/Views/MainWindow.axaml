@@ -48,7 +48,7 @@
                     Height="16"
                     Background="Red" />
                 <TextBlock
-                    Text="Change theme" />
+                    Text="Add person" />
             </StackPanel>
         </Button>
         <DataGrid

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Avalonia;
 
 namespace AvaloniaApp;
@@ -9,6 +10,7 @@ internal class Program
     // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
     // yet and stuff might break.
     [STAThread]
+    [SuppressMessage("ReSharper.DPA", "DPA0003: Excessive memory allocations in LOH", MessageId = "type: Avalonia.Rect[]")]
     public static void Main(string[] args)
     {
         BuildAvaloniaApp()
