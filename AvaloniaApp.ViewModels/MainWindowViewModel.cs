@@ -54,7 +54,7 @@ public partial class MainWindowViewModel : ObservableValidator
     [RelayCommand(CanExecute = nameof(IsCorrectInput))]
     private void Click()
     {
-        this.People.Add(new Person { FirstName = "Qwe", LastName = "Rty" });
+        this.People.Add(new Person { FirstName = this.FirstName, LastName = this.LastName });
     }
 
     private bool IsCorrectInput()
