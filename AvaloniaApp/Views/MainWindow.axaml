@@ -67,12 +67,14 @@
                     Binding="{Binding LastName}" />
                 <DataGridTemplateColumn
                     x:DataType="viewModels:Person"
-                    Header="Age"
+                    Header="{Binding ElementName=Window, Path=AgeLocalized}"
                     SortMemberPath="Age">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate DataType="viewModels:Person">
-                            <TextBlock Text="{Binding Age, StringFormat='{}{0} years'}" VerticalAlignment="Center"
-                                       HorizontalAlignment="Center" />
+                            <TextBlock
+                                Text="{Binding AgeString}"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>

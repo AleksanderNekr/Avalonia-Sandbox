@@ -60,14 +60,16 @@ public partial class MainWindowViewModel : ObservableValidator
     }
 }
 
-public class Person
+public class Person : ObservableObject
 {
-    [Display(Name = "First Name")]
+    [Display(ResourceType = typeof(Resources), Name = "FirstName")]
     public string? FirstName { get; set; }
 
-    [Display(Name = "Last Name")]
+    [Display(ResourceType = typeof(Resources), Name = "LastName")]
     public string? LastName { get; set; }
 
-    [Display(Name = "Age")]
+    [Display(ResourceType = typeof(Resources), Name = "Age")]
     public int Age { get; set; } = 10;
+
+    public string AgeString => string.Format(Resources.AgeFormat, this.Age);
 }
