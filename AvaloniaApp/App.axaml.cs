@@ -1,3 +1,4 @@
+using System;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core;
@@ -5,31 +6,41 @@ using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 using AvaloniaApp.ViewModels;
 using AvaloniaApp.Views;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AvaloniaApp;
 
 public class App : Application
 {
-    private static MainWindowViewModel MainWindowVM { get; set; } = null!;
+    public new static App Current => (App)Application.Current!;
+
+    public IServiceProvider Services { get; private set; } = null!;
 
     public override void Initialize()
     {
+        this.Services = ConfigureServices();
+
         AvaloniaXamlLoader.Load(this);
-        MainWindowVM     = new MainWindowViewModel();
-        this.DataContext = MainWindowVM;
+    }
+
+    private static IServiceProvider ConfigureServices()
+    {
+        ServiceCollection services = new();
+
+        services.AddSingleton<MainWindow>();
+        services.AddTransient<MainWindowViewModel>();
+
+        return services.BuildServiceProvider();
     }
 
     public override void OnFrameworkInitializationCompleted()
     {
-//         Remove the DataAnnotations validator
+        // Remove the DataAnnotations validator.
         ExpressionObserver.DataValidators.RemoveAll(x => x is DataAnnotationsValidationPlugin);
 
         if (this.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            desktop.MainWindow = new MainWindow
-                                 {
-                                     DataContext = MainWindowVM
-                                 };
+            desktop.MainWindow = this.Services.GetService<MainWindow>();
         }
 
         base.OnFrameworkInitializationCompleted();
