@@ -20,8 +20,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="0.10.21" />
-        <PackageReference Include="Avalonia.Desktop" Version="0.10.21" />
+        <PackageReference Include="Avalonia" Version="0.10.21"/>
+        <PackageReference Include="Avalonia.Desktop" Version="0.10.21"/>
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
         <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="0.10.21" />
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
@@ -29,8 +29,12 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="Controls\TextBoxExt.axaml.cs">
-        <DependentUpon>TextBoxExt.axaml</DependentUpon>
-      </Compile>
+        <Compile Update="Controls\TextBoxExt.axaml.cs">
+            <DependentUpon>TextBoxExt.axaml</DependentUpon>
+        </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\AvaloniaApp.ViewModels\AvaloniaApp.ViewModels.csproj"/>
     </ItemGroup>
 </Project>
