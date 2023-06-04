@@ -62,5 +62,38 @@
                     Text="Change theme" />
             </StackPanel>
         </Button>
+        <DataGrid
+            Grid.Row="4"
+            Items="{Binding People}"
+            AutoGenerateColumns="False"
+            CanUserResizeColumns="True"
+            CanUserReorderColumns="True"
+            CanUserSortColumns="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    x:DataType="viewModels:Person"
+                    Binding="{Binding FirstName}" />
+                <DataGridTextColumn
+                    x:DataType="viewModels:Person"
+                    Binding="{Binding LastName}" />
+                <DataGridTemplateColumn
+                    x:DataType="viewModels:Person"
+                    Header="Age"
+                    SortMemberPath="Age">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate DataType="viewModels:Person">
+                            <TextBlock Text="{Binding Age, StringFormat='{}{0} years'}" VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate DataType="viewModels:Person">
+                            <NumericUpDown Value="{Binding Age}" FormatString="N0" HorizontalAlignment="Stretch"
+                                           Minimum="0" Maximum="120" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
