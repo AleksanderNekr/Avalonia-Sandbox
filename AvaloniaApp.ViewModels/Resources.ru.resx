@@ -23,4 +23,22 @@
     <data name="AgeFormat" xml:space="preserve">
         <value>{0} лет</value>
     </data>
+    <data name="FieldRequired" xml:space="preserve">
+        <value>Это поле обязательно для ввода</value>
+    </data>
+    <data name="Welcome" xml:space="preserve">
+        <value>Добро пожаловать в Avalonia!</value>
+    </data>
+    <data name="WelcomeUser" xml:space="preserve">
+        <value>Добро пожаловать в Avalonia, {0} {1}!</value>
+    </data>
+    <data name="AddPerson" xml:space="preserve">
+        <value>Добавить персону</value>
+    </data>
+    <data name="FirstNameWatermark" xml:space="preserve">
+        <value>Введите ваше имя</value>
+    </data>
+    <data name="LastNameWatermark" xml:space="preserve">
+        <value>Введите вашу фамилию</value>
+    </data>
 </root>

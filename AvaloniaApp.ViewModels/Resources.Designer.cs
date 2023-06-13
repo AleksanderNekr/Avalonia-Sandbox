@@ -9,8 +9,8 @@
 
 namespace AvaloniaApp.ViewModels {
     using System;
-
-
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -28,14 +28,14 @@ namespace AvaloniaApp.ViewModels {
         private static global::System.Globalization.CultureInfo resourceCulture;
 
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        public Resources() {
         }
 
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AvaloniaApp.ViewModels.Resources", typeof(Resources).Assembly);
@@ -50,12 +50,21 @@ namespace AvaloniaApp.ViewModels {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
             set {
                 resourceCulture = value;
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Add person.
+        /// </summary>
+        public static string AddPerson {
+            get {
+                return ResourceManager.GetString("AddPerson", resourceCulture);
             }
         }
 
@@ -78,6 +87,15 @@ namespace AvaloniaApp.ViewModels {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to This field is required.
+        /// </summary>
+        public static string FieldRequired {
+            get {
+                return ResourceManager.GetString("FieldRequired", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to First Name.
         /// </summary>
         public static string FirstName {
@@ -87,11 +105,47 @@ namespace AvaloniaApp.ViewModels {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Input your First Name.
+        /// </summary>
+        public static string FirstNameWatermark {
+            get {
+                return ResourceManager.GetString("FirstNameWatermark", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Last Name.
         /// </summary>
         public static string LastName {
             get {
                 return ResourceManager.GetString("LastName", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Input your Last Name.
+        /// </summary>
+        public static string LastNameWatermark {
+            get {
+                return ResourceManager.GetString("LastNameWatermark", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome to Avalonia!.
+        /// </summary>
+        public static string Welcome {
+            get {
+                return ResourceManager.GetString("Welcome", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome to Avalonia, {0} {1}!.
+        /// </summary>
+        public static string WelcomeUser {
+            get {
+                return ResourceManager.GetString("WelcomeUser", resourceCulture);
             }
         }
     }

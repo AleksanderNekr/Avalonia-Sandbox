@@ -23,7 +23,7 @@
             MaxLength="50"
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
-            Watermark="Enter your first name here"
+            Watermark="{Binding ElementName=Window, Path=FirstNameWatermarkLocalized}"
             Text="{Binding FirstName}" />
         <TextBox
             Grid.Row="2"
@@ -32,7 +32,7 @@
             MaxLength="50"
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
-            Watermark="Enter your last name here"
+            Watermark="{Binding ElementName=Window, Path=LastNameWatermarkLocalized}"
             Text="{Binding LastName, Mode=TwoWay}" />
         <Button
             Grid.Row="3"
@@ -48,7 +48,7 @@
                     Height="16"
                     Background="Red" />
                 <TextBlock
-                    Text="Add person" />
+                    Text="{Binding ElementName=Window, Path=AddPersonLocalized}" />
             </StackPanel>
         </Button>
         <DataGrid
@@ -79,8 +79,11 @@
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate DataType="viewModels:Person">
-                            <NumericUpDown Value="{Binding Age}" FormatString="N0" HorizontalAlignment="Stretch"
-                                           Minimum="0" Maximum="120" />
+                            <NumericUpDown
+                                Value="{Binding Age}"
+                                FormatString="N0"
+                                HorizontalAlignment="Stretch"
+                                Minimum="0" Maximum="120" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>

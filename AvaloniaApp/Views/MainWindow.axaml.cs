@@ -16,4 +16,19 @@ public partial class MainWindow : Window
     {
         get { return ViewModels.Resources.Age; }
     }
+
+    public static string AddPersonLocalized
+    {
+        get { return ViewModels.Resources.AddPerson; }
+    }
+
+    public static string FirstNameWatermarkLocalized
+    {
+        get { return ViewModels.Resources.FirstNameWatermark; }
+    }
+
+    public static string LastNameWatermarkLocalized
+    {
+        get { return ViewModels.Resources.LastNameWatermark; }
+    }
 }

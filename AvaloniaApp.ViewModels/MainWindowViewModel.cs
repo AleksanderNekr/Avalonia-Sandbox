@@ -11,41 +11,28 @@ public partial class MainWindowViewModel : ObservableValidator
     [NotifyPropertyChangedFor(nameof(Greeting))]
     [NotifyCanExecuteChangedFor(nameof(ClickCommand))]
     [NotifyDataErrorInfo]
-    [Required(ErrorMessage = "This is a required field.")]
-    [Display(Name = "First Name")]
+    [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "FieldRequired")]
+    [Display(ResourceType = typeof(Resources), Name = "FirstName")]
     private string? _firstName;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(Greeting))]
     [NotifyCanExecuteChangedFor(nameof(ClickCommand))]
     [NotifyDataErrorInfo]
-    [Required(ErrorMessage = "This is a required field.")]
-    [Display(Name = "Last Name")]
+    [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "FieldRequired")]
+    [Display(ResourceType = typeof(Resources), Name = "LastName")]
     private string? _lastName;
 
     [ObservableProperty]
-    private ObservableCollection<Person> _people;
-
-    public MainWindowViewModel()
-    {
-        this.People = new();
-        for (var i = 0; i < 10; i++)
-        {
-            this.People.Add(new Person
-                            {
-                                FirstName = Guid.NewGuid().ToString(),
-                                LastName  = Guid.NewGuid().ToString(),
-                            });
-        }
-    }
+    private ObservableCollection<Person> _people = new();
 
     public string Greeting
     {
         get
         {
             return this.ClickCommand.CanExecute(null)
-                       ? $"Welcome to Avalonia, {this.FirstName} {this.LastName}!"
-                       : "Welcome to Avalonia!";
+                       ? string.Format(Resources.WelcomeUser, this.FirstName, this.LastName)
+                       : Resources.Welcome;
         }
     }
 

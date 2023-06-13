@@ -30,4 +30,22 @@
     <data name="AgeFormat" xml:space="preserve">
         <value>{0} years</value>
     </data>
+    <data name="FieldRequired" xml:space="preserve">
+        <value>This field is required</value>
+    </data>
+    <data name="Welcome" xml:space="preserve">
+        <value>Welcome to Avalonia!</value>
+    </data>
+    <data name="WelcomeUser" xml:space="preserve">
+        <value>Welcome to Avalonia, {0} {1}!</value>
+    </data>
+    <data name="AddPerson" xml:space="preserve">
+        <value>Add person</value>
+    </data>
+    <data name="FirstNameWatermark" xml:space="preserve">
+        <value>Input your First Name</value>
+    </data>
+    <data name="LastNameWatermark" xml:space="preserve">
+        <value>Input your Last Name</value>
+    </data>
 </root>
