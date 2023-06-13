@@ -1,4 +1,3 @@
-using Avalonia;
 using Avalonia.Controls;
 using AvaloniaApp.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,5 +12,8 @@ public partial class MainWindow : Window
         this.DataContext = App.Current.Services.GetService<MainWindowViewModel>();
     }
 
-    public static string AgeLocalized => ViewModels.Resources.Age;
+    public static string AgeLocalized
+    {
+        get { return ViewModels.Resources.Age; }
+    }
 }

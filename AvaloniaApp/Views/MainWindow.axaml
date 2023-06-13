@@ -74,7 +74,7 @@
                             <TextBlock
                                 Text="{Binding AgeString}"
                                 VerticalAlignment="Center"
-                                HorizontalAlignment="Center"/>
+                                HorizontalAlignment="Center" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>

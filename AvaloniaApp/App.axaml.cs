@@ -12,7 +12,10 @@ namespace AvaloniaApp;
 
 public class App : Application
 {
-    public new static App Current => (App)Application.Current!;
+    public new static App Current
+    {
+        get { return (App)Application.Current!; }
+    }
 
     public IServiceProvider Services { get; private set; } = null!;
 
@@ -27,7 +30,7 @@ public class App : Application
     {
         ServiceCollection services = new();
 
-        services.AddSingleton<MainWindow>();
+        services.AddTransient<MainWindow>();
         services.AddTransient<MainWindowViewModel>();
 
         return services.BuildServiceProvider();

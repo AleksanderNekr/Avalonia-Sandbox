@@ -7,6 +7,25 @@ namespace AvaloniaApp.ViewModels;
 
 public partial class MainWindowViewModel : ObservableValidator
 {
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(Greeting))]
+    [NotifyCanExecuteChangedFor(nameof(ClickCommand))]
+    [NotifyDataErrorInfo]
+    [Required(ErrorMessage = "This is a required field.")]
+    [Display(Name = "First Name")]
+    private string? _firstName;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(Greeting))]
+    [NotifyCanExecuteChangedFor(nameof(ClickCommand))]
+    [NotifyDataErrorInfo]
+    [Required(ErrorMessage = "This is a required field.")]
+    [Display(Name = "Last Name")]
+    private string? _lastName;
+
+    [ObservableProperty]
+    private ObservableCollection<Person> _people;
+
     public MainWindowViewModel()
     {
         this.People = new();
@@ -20,43 +39,25 @@ public partial class MainWindowViewModel : ObservableValidator
         }
     }
 
-    [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(Greeting))]
-    [NotifyDataErrorInfo]
-    [Required(ErrorMessage = "This is a required field.")]
-    [Display(Name = "First Name")]
-    private string? _firstName;
-
-    [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(Greeting))]
-    [NotifyDataErrorInfo]
-    [Required(ErrorMessage = "This is a required field.")]
-    [Display(Name = "Last Name")]
-    private string? _lastName;
-
     public string Greeting
     {
         get
         {
-            return !string.IsNullOrEmpty(this.FirstName) && !string.IsNullOrEmpty(this.LastName)
+            return this.ClickCommand.CanExecute(null)
                        ? $"Welcome to Avalonia, {this.FirstName} {this.LastName}!"
                        : "Welcome to Avalonia!";
         }
     }
 
-    [ObservableProperty]
-    private ObservableCollection<Person> _people;
-
-    [RelayCommand]
+    [RelayCommand(CanExecute = nameof(CanClick))]
     private void Click()
     {
-        this.ValidateAllProperties();
-        if (this.HasErrors)
-        {
-            return;
-        }
-
         this.People.Add(new Person { FirstName = this.FirstName, LastName = this.LastName });
+    }
+
+    private bool CanClick()
+    {
+        return !string.IsNullOrEmpty(this.FirstName) && !string.IsNullOrEmpty(this.LastName);
     }
 }
 
@@ -71,5 +72,8 @@ public class Person : ObservableObject
     [Display(ResourceType = typeof(Resources), Name = "Age")]
     public int Age { get; set; } = 10;
 
-    public string AgeString => string.Format(Resources.AgeFormat, this.Age);
+    public string AgeString
+    {
+        get { return string.Format(Resources.AgeFormat, this.Age); }
+    }
 }
